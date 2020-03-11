@@ -22,6 +22,10 @@ class HypothesisPlaygroundTestCase(unittest.TestCase):
     def test_square_and_sqrt(self, x):
         self.assertEqual(x, sqrt_rounded(square(x)))
 
+    @given(integers(min_value=-3037000499, max_value=0))
+    def test_square_and_sqrt_negative(self, x):
+        self.assertEqual(-1 * x, sqrt_rounded(square(x)))
+
     @given(integers(min_value=3037000500))
     def test_square_over_64_bit(self, x):
         self.assertRaises(ArithmeticError, square, x)
